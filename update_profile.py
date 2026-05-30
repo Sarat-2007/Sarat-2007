@@ -1,4 +1,6 @@
 import os
+import time
+import random
 import datetime
 import subprocess
 
@@ -22,9 +24,7 @@ def update_readme():
     update_text = f"{update_marker}\n<p align=\"right\"><sub><i>Last updated: {current_time} (Auto-update)</i></sub></p>"
     
     if update_marker in content:
-        # Split and replace the old marker section
         parts = content.split(update_marker)
-        # We assume the old marker is at the end. We'll reconstruct.
         content = parts[0] + update_text
     else:
         content += f"\n\n{update_text}"
@@ -40,12 +40,16 @@ def git_push():
         return False
     if not run_cmd('git commit -m "chore: daily profile pulse update"'):
         print("Nothing to commit or commit failed.")
-        # If there are no changes, we still return True so it doesn't error out
     if not run_cmd("git push origin main"):
         return False
     print("Successfully pushed daily update to GitHub!")
     return True
 
 if __name__ == "__main__":
+    # Delay randomly between 0 and 90 minutes (0 to 5400 seconds) for human-like organic timing
+    delay_seconds = random.randint(0, 5400)
+    print(f"Applying organic delay: Sleeping for {delay_seconds} seconds (~{delay_seconds // 60} minutes)...")
+    time.sleep(delay_seconds)
+    
     if update_readme():
         git_push()
