@@ -1,3 +1,9 @@
+<div align="center">
+  <img src="banner.png" alt="Sarat Chandra Banner" width="100%" />
+</div>
+
+<br/>
+
 # 👋 Hi, I'm Nallabati Venkata Durga Sai Sarat Chandra
 ### AI Engineer | Autonomous Systems Developer | Full Stack Innovator
 
